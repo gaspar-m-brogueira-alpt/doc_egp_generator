@@ -8,21 +8,19 @@ import re
 
 def analyze_egp_file(file_path):
     tables = []
-    table_pattern = re.compile(
-        r'\bFROM\s+(dcisas_k|dme_prd)\.\w+', re.IGNORECASE)
 
     with zipfile.ZipFile(file_path, 'r') as zip_ref:
         for file in zip_ref.namelist():
             if file.endswith('.log'):
                 with zip_ref.open(file) as log_file:
                     for line in log_file:
-                        print(line)
                         line = line.decode('utf-8')
-                        # matches = table_pattern.findall(line)
                         if "FROM" in line:
                             tokens = line.split(" ")
-                            print(tokens)
-                        # print(matches)
-                        # for match in matches:
-                        #    tables.append(match)
+                            for token in tokens:
+                                if "FROM" in token:
+                                    next = tokens[tokens.index(token) + 1]
+                                    if "DCISAS_K." in line or "DME_PRD." in line:
+                                        tables.append(next)
+
     return list(set(tables))  # Remove duplicates
