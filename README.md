@@ -3,8 +3,6 @@
 ## Introduction
 The EGP Doc Generator is a tool that automatically analyses the source code of a RESTful API, extracts information about endpoints, parameters, and responses, and generates detailed documentation in the OpenAPI format. The generated documentation can be displayed using Swagger UI.
 
-## Context
-This project was developed during a GitHub Copilot Hackathon, where participants collaborated to create innovative tools and solutions using GitHub Copilot.
 
 ## Project Structure
 ```mermaid
@@ -28,6 +26,7 @@ graph TD;
     A --> R[Dockerfile];
     S[Ficheiros_EGP] --> T[1_DUMP_MGPEC_TESTE.EGP];
     S --> U[README.md];
+```
 
 ## Requesting a Feature or Reporting a Bug
 
